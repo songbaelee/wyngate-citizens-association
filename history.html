@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History — Wyngate Citizens Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243358;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #faf8f3;
+      --text: #2c2c2c;
+      --text-light: #666;
+      --border: #ddd8cc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--navy);
+      z-index: 100;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      opacity: 1;
+      color: var(--gold-light);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--navy);
+      padding: 7rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .page-header .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    .page-header .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin: 1.25rem auto 0;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .content-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    /* ── SECTION BLOCKS ── */
+    .history-section {
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .history-section:last-child {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .history-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .section-rule {
+      width: 36px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .history-section p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .history-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .history-section a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+    }
+
+    .history-section a:hover {
+      color: var(--gold);
+    }
+
+    /* ── PHOTO PAIR ── */
+    .photo-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .photo-item img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    .photo-caption {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+
+    /* ── SINGLE PHOTO ── */
+    .photo-single {
+      margin: 2rem 0;
+    }
+
+    .photo-single img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    /* ── AERIAL GRID ── */
+    .aerial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .aerial-item img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--border);
+      filter: grayscale(20%);
+    }
+
+    .aerial-item .photo-caption {
+      text-align: center;
+    }
+
+    /* ── AD PAIR ── */
+    .ad-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .ad-item img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    /* ── NOTABLE PEOPLE ── */
+    .notable-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .notable-item {
+      border-left: 3px solid var(--gold);
+      padding-left: 1.25rem;
+    }
+
+    .notable-item h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── PENDING NOTICE ── */
+    .pending-notice {
+      background: #fff;
+      border: 1px dashed var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    /* ── DOWNLOAD BOX ── */
+    .download-box {
+      background: var(--navy);
+      color: #fff;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      margin: 2rem 0;
+      flex-wrap: wrap;
+    }
+
+    .download-box p {
+      color: rgba(255,255,255,0.85) !important;
+      margin: 0 !important;
+      font-size: 0.95rem;
+    }
+
+    .download-box strong {
+      display: block;
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.5rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+    }
+
+    /* ── CREDITS ── */
+    .credits-note {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      margin-top: 0.5rem;
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-light);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      border-top: 3px solid var(--gold);
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 3px solid var(--gold);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+
+      .photo-pair,
+      .ad-pair {
+        grid-template-columns: 1fr;
+      }
+
+      .aerial-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .download-box {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .aerial-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">WCA</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="history.html" class="active">About &amp; History</a></li>
+        <li><a href="gallery.html">Photos</a></li>
+        <li><a href="businesses.html">Local Businesses</a></li>
+        <li><a href="representatives.html">Representatives</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+      <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="eyebrow">Wyngate Citizens Association</p>
+    <h1>About &amp; History</h1>
+    <div class="divider"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content-wrap">
+
+    <!-- ABOUT WCA -->
+    <div class="history-section">
+      <p class="section-label">Who We Are</p>
+      <h2>About the Wyngate Citizens Association</h2>
+      <div class="section-rule"></div>
+      <p>The Wyngate Citizens Association (WCA) is a nonprofit group representing the approximately 1,600 households that live between Fernwood Road, Greentree Road, the Capital Beltway, and Old Georgetown Road in Bethesda, Maryland.</p>
+      <p>The WCA works to connect neighbors, support community projects, and give residents a voice on issues affecting their quality of life. The WCA listserv — with over 1,400 members — is one of the most active neighborhood forums in the area.</p>
+
+      <div class="pending-notice">
+        Additional history of the Wyngate Citizens Association coming soon.
+      </div>
+    </div>
+
+    <!-- FARM TO SUBURB -->
+    <div class="history-section">
+      <p class="section-label">Origins</p>
+      <h2>From Farm to Neighborhood</h2>
+      <div class="section-rule"></div>
+      <p>The land that became Wyngate was farmland well into the twentieth century. In 1949, looking east from a backyard on Ewing Drive, you would have seen open fields stretching toward Old Georgetown Road — not a house in sight.</p>
+
+      <div class="photo-single">
+        <img src="images/1949-ewing-drive.jpg" alt="View from Ewing Drive looking east, 1949 — open farmland before Wyngate was built" />
+        <p class="photo-caption">View from a backyard on Ewing Drive, looking east toward Old Georgetown Road, 1949. <br>Courtesy of Susannah Files.</p>
+      </div>
+
+      <p>The aerial photographs below show the transformation of the neighborhood decade by decade — from open land in 1949 to a fully developed community by 1979.</p>
+
+      <div class="aerial-grid">
+        <div class="aerial-item">
+          <img src="images/aerial-1949.jpg" alt="Aerial view of Wyngate area, 1949" />
+          <p class="photo-caption">1949</p>
+        </div>
+        <div class="aerial-item">
+          <img src="images/aerial-1957.jpg" alt="Aerial view of Wyngate area, 1957" />
+          <p class="photo-caption">1957</p>
+        </div>
+        <div class="aerial-item">
+          <img src="images/aerial-1970.jpg" alt="Aerial view of Wyngate area, 1970" />
+          <p class="photo-caption">1970</p>
+        </div>
+        <div class="aerial-item">
+          <img src="images/aerial-1979.jpg" alt="Aerial view of Wyngate area, 1979" />
+          <p class="photo-caption">1979</p>
+        </div>
+        <div class="aerial-item">
+          <img src="images/aerial-2006.jpg" alt="Aerial view of Wyngate area, 2006" />
+          <p class="photo-caption">2006</p>
+        </div>
+      </div>
+      <p class="credits-note">Aerial images © HistoricAerials.com — placeholder images, licensed versions pending. Submitted by George Smith.</p>
+    </div>
+
+    <!-- HENDRY FARM -->
+    <div class="history-section">
+      <p class="section-label">Early History</p>
+      <h2>The Hendry Farm</h2>
+      <div class="section-rule"></div>
+      <p>Among the earliest landowners in the area were Isaac Singleton Hendry and his wife Annie Walton Hendry, who owned a farm on what is now Singleton Drive. Their names live on in the neighborhood today: Singleton Drive is named for Isaac, and Walton Road — running between Melvern Drive and Wilmett Road — is named for Annie.</p>
+
+      <div class="photo-pair">
+        <div class="photo-item">
+          <img src="images/isaac-hendry.jpg" alt="Portrait of Isaac Singleton Hendry" />
+          <p class="photo-caption">Isaac Singleton Hendry. <br>Source: <a href="https://montgomeryhistory.catalogaccess.com/photos/20272" target="_blank">Montgomery History</a> (catalog #086-HENDRY-001). Shared by George Smith.</p>
+        </div>
+        <div class="photo-item">
+          <img src="images/annie-hendry.jpg" alt="Portrait of Annie Walton Hendry" />
+          <p class="photo-caption">Annie Walton Hendry. <br>Source: <a href="https://montgomeryhistory.catalogaccess.com/photos/20273" target="_blank">Montgomery History</a> (catalog #086-HENDRY-002). Shared by George Smith.</p>
+        </div>
+      </div>
+
+      <p>The original subdivision that became part of Wyngate was known as Hendry Estates. According to neighborhood family history, the first eight homes in the development were built by the father of longtime resident Leland Henry.</p>
+      <p class="credits-note">Family history details shared by Diane Boyle.</p>
+    </div>
+
+    <!-- BUILDING WYNGATE -->
+    <div class="history-section">
+      <p class="section-label">1950s Development</p>
+      <h2>Building Wyngate</h2>
+      <div class="section-rule"></div>
+      <p>Much of Wyngate was built in the early 1950s by Henry J. Connor, Inc., a Bethesda builder in operation for over two decades. The ads below, from the Washington Post, give a vivid picture of what the neighborhood looked like — and what it cost — when it was new.</p>
+
+      <div class="ad-pair">
+        <div class="ad-item">
+          <img src="images/ad-1952.jpg" alt="1952 Washington Post advertisement for Wyngate homes by Henry J. Connor Inc." />
+          <p class="photo-caption">Washington Post, June 29, 1952. Brick Cape Cod homes starting at $15,450. "One block to new Wyngate Elementary School."</p>
+        </div>
+        <div class="ad-item">
+          <img src="images/ad-1957.jpg" alt="1957 Washington Post advertisement for Wyngate homes by Henry J. Connor Inc." />
+          <p class="photo-caption">Washington Post, July 27, 1957. Over 1,900 sq ft for $22,500.</p>
+        </div>
+      </div>
+      <p class="credits-note">Newspaper ads shared by Iosif Vaisman.</p>
+
+      <p>Some of Wyngate's earliest homes predate the postwar building boom. Two houses on Kentstone Drive date to 1939 and are still standing today. According to family history, 9516 Kentstone Drive was one of fifteen "Houses of Tomorrow" displayed at the 1939 World's Fair — demonstration homes built to showcase modern construction and design. The house has since been demolished, but its twin at 9518 Kentstone remains.</p>
+      <p>The original owner of 9518 Kentstone was William Camp, who served as Comptroller of the Currency for the U.S. Treasury Department — notably, the only Comptroller to serve under both a Democratic and a Republican president.</p>
+      <p class="credits-note">Kentstone history shared by Cathy Adams, former resident. World's Fair connection based on family recollection.</p>
+    </div>
+
+    <!-- NOTABLE RESIDENTS -->
+    <div class="history-section">
+      <p class="section-label">Notable Residents</p>
+      <h2>Wyngate Alumni</h2>
+      <div class="section-rule"></div>
+      <p>Wyngate has been home to some notable figures over the years.</p>
+
+      <div class="notable-list">
+        <div class="notable-item">
+          <h3>Darren Star</h3>
+          <p>Television producer and creator of <em>Beverly Hills, 90210</em>, <em>Melrose Place</em>, <em>Sex and the City</em>, and <em>Emily in Paris</em>. Star grew up in Wyngate and attended Wyngate Elementary School before his family moved to Potomac. His landmark show 90210 was originally conceived as being set in Potomac, Maryland. Read more: <a href="https://mocoshow.com/2025/12/25/the-mind-behind-emily-in-paris-grew-up-in-montgomery-county/" target="_blank">MoCo Show, December 2025</a>.</p>
+          <p class="credits-note">Shared by Rob Kimmer.</p>
+        </div>
+
+        <div class="notable-item">
+          <h3>Nils Lofgren</h3>
+          <p>Rock guitarist and longtime member of Bruce Springsteen's E Street Band, inducted into the Rock and Roll Hall of Fame in 2014. Lofgren grew up in Bethesda and attended Walter Johnson High School. He is believed to have lived on Wilmett Court.</p>
+          <p class="credits-note">Shared by Arlene Ferretti.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIGER'S TERRITORY -->
+    <div class="history-section">
+      <p class="section-label">Further Reading</p>
+      <h2>The Tiger's Territory</h2>
+      <div class="section-rule"></div>
+      <p>In 1976, students and parents at North Bethesda Junior High School produced a remarkable local history pamphlet as part of a Bicentennial project. Titled <em>The Tiger's Territory</em>, it documents the history of landmarks throughout the North Bethesda area — including many sites that shaped what became Wyngate.</p>
+
+      <div class="download-box">
+        <div>
+          <strong>The Tiger's Territory (1976)</strong>
+          <p>A neighborhood history by students of North Bethesda Junior High School. Published by the Parent Teacher Student Association.</p>
+        </div>
+        <a href="documents/tigers-territory.pdf" class="btn btn-gold" download>Download PDF</a>
+      </div>
+      <p class="credits-note">Copy provided by George Smith. Digitized by a friend of George Smith.</p>
+    </div>
+
+  </div><!-- end content-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Wyngate Citizens Association &nbsp;·&nbsp; Bethesda, Maryland 20817</p>
+    <p style="margin-top:0.5rem">Contact the board: <a href="mailto:WyngateBoard@groups.io">WyngateBoard@groups.io</a></p>
+    <p style="margin-top:0.5rem; font-size:0.78rem; opacity:0.6;">© 2025 Wyngate Citizens Association</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+
+</body>
+</html>
