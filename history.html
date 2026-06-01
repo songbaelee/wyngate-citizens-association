@@ -223,23 +223,133 @@
       border: 1px solid var(--border);
     }
 
-    /* ── AERIAL GRID ── */
-    .aerial-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+    /* ── AERIAL SLIDER ── */
+    .aerial-slider-wrap {
       margin: 2rem 0;
     }
 
-    .aerial-item img {
-      width: 100%;
-      display: block;
+    .year-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin-bottom: 1rem;
       border: 1px solid var(--border);
-      filter: grayscale(20%);
+      overflow: hidden;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .aerial-item .photo-caption {
-      text-align: center;
+    .year-btn {
+      background: #fff;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-light);
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 0.05em;
+    }
+
+    .year-btn:last-child { border-right: none; }
+
+    .year-btn.active {
+      background: var(--navy);
+      color: var(--gold);
+    }
+
+    .year-btn:hover:not(.active) {
+      background: var(--cream);
+      color: var(--navy);
+    }
+
+    .slider-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      cursor: ew-resize;
+      user-select: none;
+      border: 1px solid var(--border);
+    }
+
+    .slider-container img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .slider-top {
+      position: absolute;
+      top: 0; left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .slider-top img {
+      width: auto;
+      height: 100%;
+      max-width: none;
+      position: absolute;
+      top: 0; left: 0;
+    }
+
+    /* make base image take correct width */
+    .slider-base img {
+      width: 100%;
+    }
+
+    .slider-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: var(--gold);
+      pointer-events: none;
+    }
+
+    .slider-handle::before,
+    .slider-handle::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      background: var(--gold);
+      border-radius: 50%;
+      top: 50%;
+      margin-top: -18px;
+    }
+
+    .slider-handle::after {
+      background: var(--navy);
+      width: 28px;
+      height: 28px;
+      margin-top: -14px;
+    }
+
+    .slider-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .slider-labels span {
+      background: var(--navy);
+      color: var(--gold);
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
     }
 
     /* ── AD PAIR ── */
@@ -385,8 +495,13 @@
         grid-template-columns: 1fr;
       }
 
-      .aerial-grid {
-        grid-template-columns: 1fr 1fr;
+      .aerial-slider-wrap {
+        margin: 1.5rem 0;
+      }
+
+      .year-btn {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.78rem;
       }
 
       .download-box {
@@ -459,29 +574,36 @@
 
       <p>The aerial photographs below show the transformation of the neighborhood decade by decade — from open land in 1949 to a fully developed community by 1979.</p>
 
-      <div class="aerial-grid">
-        <div class="aerial-item">
-          <img src="images/aerial-1949.jpg" alt="Aerial view of Wyngate area, 1949" />
-          <p class="photo-caption">1949</p>
+      <div class="aerial-slider-wrap">
+        <!-- Year selector -->
+        <div class="year-nav" id="year-nav">
+          <button class="year-btn active" data-index="0">1949</button>
+          <button class="year-btn" data-index="1">1957</button>
+          <button class="year-btn" data-index="2">1970</button>
+          <button class="year-btn" data-index="3">1979</button>
+          <button class="year-btn" data-index="4">2006</button>
         </div>
-        <div class="aerial-item">
-          <img src="images/aerial-1957.jpg" alt="Aerial view of Wyngate area, 1957" />
-          <p class="photo-caption">1957</p>
+
+        <!-- Slider -->
+        <div class="slider-container" id="slider">
+          <!-- Base image (right/later year) -->
+          <div class="slider-base">
+            <img id="img-right" src="images/aerial-1957.jpg" alt="Aerial photo" />
+          </div>
+          <!-- Overlay image (left/earlier year) -->
+          <div class="slider-top" id="slider-top">
+            <img id="img-left" src="images/aerial-1949.jpg" alt="Aerial photo" />
+          </div>
+          <!-- Handle -->
+          <div class="slider-handle" id="slider-handle"></div>
         </div>
-        <div class="aerial-item">
-          <img src="images/aerial-1970.jpg" alt="Aerial view of Wyngate area, 1970" />
-          <p class="photo-caption">1970</p>
-        </div>
-        <div class="aerial-item">
-          <img src="images/aerial-1979.jpg" alt="Aerial view of Wyngate area, 1979" />
-          <p class="photo-caption">1979</p>
-        </div>
-        <div class="aerial-item">
-          <img src="images/aerial-2006.jpg" alt="Aerial view of Wyngate area, 2006" />
-          <p class="photo-caption">2006</p>
+
+        <div class="slider-labels">
+          <span id="label-left">← 1949</span>
+          <span id="label-right">1957 →</span>
         </div>
       </div>
-      <p class="credits-note">Aerial images © HistoricAerials.com — placeholder images, licensed versions pending. Submitted by George Smith.</p>
+      <p class="credits-note">Aerial images © HistoricAerials.com — placeholder images, licensed versions pending. Submitted by George Smith. Drag the divider to compare years; use the buttons to step through time.</p>
     </div>
 
     <!-- HENDRY FARM -->
@@ -579,10 +701,76 @@
   </footer>
 
   <script>
+    // Nav toggle
     const toggle = document.getElementById('nav-toggle');
     const links = document.getElementById('nav-links');
     toggle.addEventListener('click', () => links.classList.toggle('open'));
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // Aerial slider
+    const years = ['1949','1957','1970','1979','2006'];
+    const images = years.map(y => `images/aerial-${y}.jpg`);
+    let currentIndex = 0;
+
+    const slider = document.getElementById('slider');
+    const sliderTop = document.getElementById('slider-top');
+    const imgLeft = document.getElementById('img-left');
+    const imgRight = document.getElementById('img-right');
+    const handle = document.getElementById('slider-handle');
+    const labelLeft = document.getElementById('label-left');
+    const labelRight = document.getElementById('label-right');
+    const yearBtns = document.querySelectorAll('.year-btn');
+
+    function setYear(index) {
+      currentIndex = index;
+      const leftYear = years[index];
+      const rightYear = years[index + 1] || years[index];
+      imgLeft.src = images[index];
+      imgRight.src = images[Math.min(index + 1, images.length - 1)];
+      labelLeft.textContent = `← ${leftYear}`;
+      labelRight.textContent = `${rightYear} →`;
+      yearBtns.forEach((b, i) => b.classList.toggle('active', i === index));
+      // reset handle to 50%
+      setSliderPos(50);
+    }
+
+    function setSliderPos(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      sliderTop.style.width = pct + '%';
+      handle.style.left = pct + '%';
+      // scale left image to fill container width
+      imgLeft.style.width = (100 / pct * 100) + '%';
+    }
+
+    // Drag logic
+    let dragging = false;
+
+    function getPos(e) {
+      const rect = slider.getBoundingClientRect();
+      const x = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      return Math.max(0, Math.min(100, (x / rect.width) * 100));
+    }
+
+    slider.addEventListener('mousedown', e => { dragging = true; setSliderPos(getPos(e)); });
+    slider.addEventListener('touchstart', e => { dragging = true; setSliderPos(getPos(e)); }, { passive: true });
+    window.addEventListener('mousemove', e => { if (dragging) setSliderPos(getPos(e)); });
+    window.addEventListener('touchmove', e => { if (dragging) setSliderPos(getPos(e)); }, { passive: true });
+    window.addEventListener('mouseup', () => dragging = false);
+    window.addEventListener('touchend', () => dragging = false);
+
+    // Year buttons
+    yearBtns.forEach((btn, i) => {
+      btn.addEventListener('click', () => {
+        if (i < years.length - 1) setYear(i);
+      });
+    });
+
+    // Disable last button (no "next" year to compare)
+    yearBtns[yearBtns.length - 1].disabled = true;
+    yearBtns[yearBtns.length - 1].title = 'Select an earlier year to compare';
+
+    // Init
+    setSliderPos(50);
   </script>
 
 </body>
