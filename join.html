@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join — Wyngate Citizens Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243358;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #faf8f3;
+      --text: #2c2c2c;
+      --text-light: #666;
+      --border: #ddd8cc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--navy);
+      z-index: 100;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      opacity: 1;
+      color: var(--gold-light);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--navy);
+      padding: 7rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .page-header .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    .page-header .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin: 1.25rem auto 0;
+    }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    .join-section {
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .join-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .join-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .section-rule {
+      width: 36px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .join-section p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .join-section p:last-child { margin-bottom: 0; }
+
+    .join-section a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+    }
+
+    .join-section a:hover { color: var(--gold); }
+
+    /* ── MEMBERSHIP CARD ── */
+    .membership-card {
+      background: var(--navy);
+      color: #fff;
+      padding: 2rem 2.5rem;
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .membership-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--gold);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .membership-price span {
+      display: block;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.25rem;
+    }
+
+    .membership-details {
+      flex: 1;
+    }
+
+    .membership-details p {
+      color: rgba(255,255,255,0.85) !important;
+      margin-bottom: 0 !important;
+      font-size: 0.95rem;
+    }
+
+    /* ── PAYMENT OPTIONS ── */
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin: 1.5rem 0;
+    }
+
+    .payment-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .payment-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .payment-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      margin: 0 auto 0.75rem;
+      display: block;
+    }
+
+    .payment-card p {
+      font-size: 0.85rem;
+      color: var(--text-light) !important;
+      margin: 0 !important;
+    }
+
+    .check-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      padding: 1.5rem;
+    }
+
+    .check-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .check-box p {
+      font-size: 0.95rem;
+      color: var(--text) !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    .check-box p:last-child { margin-bottom: 0 !important; }
+
+    address {
+      font-style: normal;
+      background: var(--cream);
+      border-left: 3px solid var(--gold);
+      padding: 0.75rem 1rem;
+      margin-top: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ── LISTSERV ── */
+    .listserv-steps {
+      margin: 1.5rem 0;
+      counter-reset: steps;
+    }
+
+    .listserv-step {
+      display: flex;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      background: var(--navy);
+      color: var(--gold);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .step-text {
+      font-size: 0.95rem;
+      color: var(--text);
+      padding-top: 0.35rem;
+    }
+
+    .step-text strong {
+      display: block;
+      color: var(--navy);
+      margin-bottom: 0.1rem;
+    }
+
+    .email-chip {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--gold);
+      font-size: 0.82rem;
+      padding: 0.2rem 0.6rem;
+      font-family: monospace;
+      letter-spacing: 0.02em;
+      word-break: break-all;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-box h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-box p {
+      font-size: 0.9rem;
+      color: var(--text-light) !important;
+      margin: 0 !important;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-light);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      border-top: 3px solid var(--gold);
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 3px solid var(--gold);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+
+      .membership-card {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.5rem;
+      }
+
+      .contact-box {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">WCA</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="history.html">About &amp; History</a></li>
+        <li><a href="gallery.html">Photos</a></li>
+        <li><a href="businesses.html">Local Businesses</a></li>
+        <li><a href="representatives.html">Representatives</a></li>
+        <li><a href="join.html" class="active">Join</a></li>
+      </ul>
+      <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="eyebrow">Wyngate Citizens Association</p>
+    <h1>Join the WCA</h1>
+    <div class="divider"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content-wrap">
+
+    <!-- MEMBERSHIP -->
+    <div class="join-section">
+      <p class="section-label">Membership</p>
+      <h2>Become a Member</h2>
+      <div class="section-rule"></div>
+      <p>WCA membership connects you to the neighborhood. Members gain access to the WCA listserv — Wyngate's most active community forum, with over 1,400 members discussing everything from local services to neighborhood projects and events.</p>
+
+      <div class="membership-card">
+        <div class="membership-price">
+          $20
+          <span>per year</span>
+        </div>
+        <div class="membership-details">
+          <p>Annual membership in the Wyngate Citizens Association. Pay online via PayPal or Venmo, or by check. Scan a QR code below to pay instantly.</p>
+        </div>
+      </div>
+
+      <!-- Payment options -->
+      <div class="payment-grid">
+        <div class="payment-card">
+          <h3>PayPal</h3>
+          <img src="images/qr-paypal.png" alt="QR code for WCA PayPal recurring $20 annual membership" />
+          <p>Scan for recurring annual membership via PayPal</p>
+        </div>
+        <div class="payment-card">
+          <h3>Venmo</h3>
+          <img src="images/qr-venmo.png" alt="QR code for WCA Venmo one-time $20 annual membership" />
+          <p>Scan for one-time annual membership via Venmo</p>
+        </div>
+      </div>
+
+      <div class="check-box">
+        <h3>Pay by Check</h3>
+        <p>Make checks payable to <strong>Wyngate Citizens Association</strong> and mail to:</p>
+        <address>
+          Wyngate Citizens Association<br>
+          6011 Melvern Drive<br>
+          Bethesda, MD 20817
+        </address>
+      </div>
+    </div>
+
+    <!-- LISTSERV -->
+    <div class="join-section">
+      <p class="section-label">Stay Connected</p>
+      <h2>Join the Listserv</h2>
+      <div class="section-rule"></div>
+      <p>The WCA listserv on <a href="https://groups.io/g/WyngateCitizens" target="_blank">Groups.io</a> is where the neighborhood conversation happens — curb alerts, recommendations, community news, block parties, and more. Over 1,400 neighbors are already members.</p>
+
+      <div class="listserv-steps">
+        <div class="listserv-step">
+          <div class="step-number">1</div>
+          <div class="step-text">
+            <strong>Send an email to join</strong>
+            <span class="email-chip">WyngateCitizens+subscribe@groups.io</span>
+          </div>
+        </div>
+        <div class="listserv-step">
+          <div class="step-number">2</div>
+          <div class="step-text">
+            <strong>Include in your message</strong>
+            Your name, street address, and reason for joining. Requests without this information will not be approved.
+          </div>
+        </div>
+        <div class="listserv-step">
+          <div class="step-number">3</div>
+          <div class="step-text">
+            <strong>Wait for approval</strong>
+            The WCA board will review and approve your request.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="join-section">
+      <p class="section-label">Questions?</p>
+      <h2>Contact the Board</h2>
+      <div class="section-rule"></div>
+      <p>Have a question about membership, the listserv, or anything else? Reach the WCA board directly.</p>
+
+      <div class="contact-box">
+        <div class="contact-icon">✉</div>
+        <div>
+          <h3>WCA Board</h3>
+          <p><a href="mailto:WyngateBoard@groups.io">WyngateBoard@groups.io</a></p>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end content-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Wyngate Citizens Association &nbsp;·&nbsp; Bethesda, Maryland 20817</p>
+    <p style="margin-top:0.5rem">
+      <a href="https://groups.io/g/WyngateCitizens" target="_blank">Join the Listserv</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:WyngateBoard@groups.io">WyngateBoard@groups.io</a>
+    </p>
+    <p style="margin-top:0.5rem; font-size:0.78rem; opacity:0.6;">© 2025 Wyngate Citizens Association</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+
+</body>
+</html>
