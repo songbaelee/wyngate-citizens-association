@@ -320,6 +320,14 @@
       border: 1px solid var(--border);
       border-top: 3px solid var(--gold);
       padding: 1.75rem;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .do-you-card:hover {
+      border-top-color: var(--navy);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .do-you-card p {
@@ -422,11 +430,7 @@
     <div class="nav-inner">
       <a class="nav-logo" href="index.html">WCA</a>
       <ul class="nav-links" id="nav-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="history.html">History</a></li>
-        <li><a href="gallery.html">Photos</a></li>
-        <li><a href="businesses.html">Local Businesses</a></li>
-        <li><a href="representatives.html">Representatives</a></li>
+        <li><a href="history.html">About &amp; History</a></li>
         <li><a href="join.html">Join</a></li>
       </ul>
       <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -443,7 +447,7 @@
       <p class="hero-desc">A nonprofit community organization serving the 1,600 households of Wyngate — connecting neighbors, supporting local projects, and strengthening our community.</p>
       <div class="hero-actions">
         <a href="join.html" class="btn btn-gold">Join the WCA</a>
-        <a href="about.html" class="btn btn-outline">Learn More</a>
+        <a href="history.html" class="btn btn-outline">Learn More</a>
       </div>
     </div>
   </section>
@@ -458,7 +462,7 @@
           <div class="section-divider"></div>
           <p>The Wyngate Citizens Association (WCA) is a nonprofit group representing the households that live between Fernwood Road, Greentree Road, the Capital Beltway, and Old Georgetown Road.</p>
           <p>When you want to know what's happening in the community, WCA can put you in touch with people who have answers — its members. It's the next best thing to chatting with neighbors over the backyard fence.</p>
-          <p style="margin-top:1.5rem"><a href="about.html" class="btn btn-gold">About WCA</a></p>
+          <p style="margin-top:1.5rem"><a href="history.html" class="btn btn-gold">About WCA</a></p>
         </div>
         <div class="about-stats">
           <div class="stat-box">
@@ -489,24 +493,24 @@
       <h2 class="section-title">Do You…</h2>
       <div class="section-divider"></div>
       <div class="do-you-grid">
-        <div class="do-you-card">
+        <a href="join.html" class="do-you-card">
           <p>Need a lawn service, plumber, local club, or playgroup for your child?</p>
-        </div>
-        <div class="do-you-card">
+        </a>
+        <a href="join.html" class="do-you-card">
           <p>Want to be part of the annual WCA July 4th celebration?</p>
-        </div>
-        <div class="do-you-card">
+        </a>
+        <a href="join.html" class="do-you-card">
           <p>Want to lead a neighborhood project with WCA backing?</p>
-        </div>
-        <div class="do-you-card">
+        </a>
+        <a href="join.html" class="do-you-card">
           <p>Need help planning a block party?</p>
-        </div>
-        <div class="do-you-card">
+        </a>
+        <a href="join.html" class="do-you-card">
           <p>Want to become more involved in your neighborhood?</p>
-        </div>
-        <div class="do-you-card">
+        </a>
+        <a href="join.html" class="do-you-card">
           <p>Want to stay informed about issues affecting our community and quality of life?</p>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -523,7 +527,11 @@
   <!-- FOOTER -->
   <footer>
     <p>Wyngate Citizens Association &nbsp;·&nbsp; Bethesda, Maryland 20817</p>
-    <p style="margin-top:0.5rem">Contact the board: <a href="mailto:WyngateBoard@groups.io">WyngateBoard@groups.io</a></p>
+    <p style="margin-top:0.5rem">
+      <a href="https://groups.io/g/WyngateCitizens" target="_blank">Join the Listserv</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:WyngateBoard@groups.io">WyngateBoard@groups.io</a>
+    </p>
     <p style="margin-top:0.5rem; font-size:0.78rem; opacity:0.6;">© 2025 Wyngate Citizens Association</p>
   </footer>
 
