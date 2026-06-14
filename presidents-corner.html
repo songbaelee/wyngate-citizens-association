@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>President's Corner — Wyngate Citizens Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1a2744;
+      --navy-light: #243358;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #faf8f3;
+      --text: #2c2c2c;
+      --text-light: #666;
+      --border: #ddd8cc;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--navy);
+      z-index: 100;
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      opacity: 1;
+      color: var(--gold-light);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s;
+    }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--navy);
+      padding: 7rem 1.5rem 3.5rem;
+      text-align: center;
+    }
+
+    .page-header .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+    }
+
+    .page-header .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--gold);
+      margin: 1.25rem auto 0;
+    }
+
+    /* ── CONTENT ── */
+    .content-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 5rem;
+    }
+
+    .page-section {
+      margin-bottom: 4rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .page-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3.5vw, 2rem);
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .section-rule {
+      width: 36px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .page-section p {
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .page-section p:last-child { margin-bottom: 0; }
+
+    .page-section a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+    }
+
+    .page-section a:hover { color: var(--gold); }
+
+    /* ── UPDATE CARD ── */
+    .update-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--gold);
+      padding: 2rem;
+      margin: 1.5rem 0;
+    }
+
+    .update-date {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .update-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .update-signoff {
+      margin-top: 1rem;
+      font-style: italic;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* ── PENDING NOTICE ── */
+    .pending-notice {
+      background: #fff;
+      border: 1px dashed var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-light);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: 0.85rem;
+      border-top: 3px solid var(--gold);
+    }
+
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 3px solid var(--gold);
+      }
+
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a class="nav-logo" href="index.html">WCA</a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="history.html">About &amp; History</a></li>
+        <li><a href="meetings.html">Meetings</a></li>
+        <li><a href="july4th.html">July 4th</a></li>
+        <li><a href="presidents-corner.html" class="active">President's Corner</a></li>
+        <li><a href="join.html">Join</a></li>
+      </ul>
+      <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <p class="eyebrow">Wyngate Citizens Association</p>
+    <h1>President's Corner</h1>
+    <div class="divider"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content-wrap">
+
+    <!-- LATEST UPDATE -->
+    <div class="page-section">
+      <p class="section-label">From the President</p>
+      <h2>Latest Update</h2>
+      <div class="section-rule"></div>
+      <p>Each month, WCA President Craig Hillman shares an update here on neighborhood news, ongoing projects, and what's coming up for Wyngate.</p>
+
+      <div class="pending-notice">
+        The first President's Corner update will be posted here soon.
+      </div>
+    </div>
+
+    <!-- ARCHIVE -->
+    <div class="page-section">
+      <p class="section-label">Looking Back</p>
+      <h2>Past Updates</h2>
+      <div class="section-rule"></div>
+      <div class="pending-notice">
+        Past updates will be archived here as they're posted.
+      </div>
+    </div>
+
+  </div><!-- end content-wrap -->
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Wyngate Citizens Association &nbsp;·&nbsp; Bethesda, Maryland 20817</p>
+    <p style="margin-top:0.5rem">
+      <a href="https://groups.io/g/WyngateCitizens" target="_blank">Join the Listserv</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:WyngateBoard@groups.io">WyngateBoard@groups.io</a>
+    </p>
+    <p style="margin-top:0.5rem; font-size:0.78rem; opacity:0.6;">© 2025 Wyngate Citizens Association</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const links = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+
+</body>
+</html>

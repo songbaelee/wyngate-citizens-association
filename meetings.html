@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Join — Wyngate Citizens Association</title>
+  <title>Meetings — Wyngate Citizens Association</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -136,13 +136,13 @@
       padding: 4rem 1.5rem 5rem;
     }
 
-    .join-section {
+    .page-section {
       margin-bottom: 4rem;
       padding-bottom: 4rem;
       border-bottom: 1px solid var(--border);
     }
 
-    .join-section:last-child {
+    .page-section:last-child {
       border-bottom: none;
       margin-bottom: 0;
       padding-bottom: 0;
@@ -157,7 +157,7 @@
       margin-bottom: 0.5rem;
     }
 
-    .join-section h2 {
+    .page-section h2 {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.5rem, 3.5vw, 2rem);
       font-weight: 700;
@@ -173,144 +173,91 @@
       margin-bottom: 1.5rem;
     }
 
-    .join-section p {
+    .page-section p {
       margin-bottom: 1rem;
       color: var(--text);
     }
 
-    .join-section p:last-child { margin-bottom: 0; }
+    .page-section p:last-child { margin-bottom: 0; }
 
-    .join-section a {
+    .page-section a {
       color: var(--navy);
       text-decoration: underline;
       text-decoration-color: var(--gold);
     }
 
-    .join-section a:hover { color: var(--gold); }
+    .page-section a:hover { color: var(--gold); }
 
-    /* ── MEMBERSHIP CARD ── */
-    .membership-card {
-      background: var(--navy);
-      color: #fff;
-      padding: 2rem 2.5rem;
-      margin: 2rem 0;
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .membership-price {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 900;
-      color: var(--gold);
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    .membership-price span {
-      display: block;
-      font-family: 'Source Sans 3', sans-serif;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
-      margin-top: 0.25rem;
-    }
-
-    .membership-details {
-      flex: 1;
-    }
-
-    .membership-details p {
-      color: rgba(255,255,255,0.85) !important;
-      margin-bottom: 0 !important;
-      font-size: 0.95rem;
-    }
-
-    /* ── PAYMENT OPTIONS ── */
-    .payment-grid {
+    /* ── SCHEDULE GRID ── */
+    .schedule-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
       margin: 1.5rem 0;
     }
 
-    .payment-card {
+    .schedule-card {
       background: #fff;
       border: 1px solid var(--border);
       border-top: 3px solid var(--gold);
-      padding: 1.5rem;
+      padding: 1.5rem 1rem;
       text-align: center;
     }
 
-    .payment-card h3 {
+    .schedule-card .month {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
+      font-weight: 700;
       color: var(--navy);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.4rem;
     }
 
-    .payment-card img {
-      width: 120px;
-      height: 120px;
-      object-fit: contain;
-      margin: 0 auto 0.75rem;
-      display: block;
-    }
-
-    .payment-card p {
+    .schedule-card .detail {
       font-size: 0.85rem;
-      color: var(--text-light) !important;
+      color: var(--text-light);
+    }
+
+    .schedule-meta {
+      background: var(--navy);
+      color: #fff;
+      padding: 1.5rem 2rem;
+      margin: 1.5rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    .schedule-meta div p:first-child {
+      color: var(--gold) !important;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem !important;
+    }
+
+    .schedule-meta div p:last-child {
+      color: #fff !important;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
       margin: 0 !important;
     }
 
-    .check-box {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-top: 3px solid var(--gold);
-      padding: 1.5rem;
-    }
-
-    .check-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
-      color: var(--navy);
-      margin-bottom: 0.75rem;
-    }
-
-    .check-box p {
-      font-size: 0.95rem;
-      color: var(--text) !important;
-      margin-bottom: 0.5rem !important;
-    }
-
-    .check-box p:last-child { margin-bottom: 0 !important; }
-
-    address {
-      font-style: normal;
-      background: var(--cream);
-      border-left: 3px solid var(--gold);
-      padding: 0.75rem 1rem;
-      margin-top: 0.75rem;
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
-
-    /* ── LISTSERV ── */
-    .listserv-steps {
+    /* ── ELECTION STEPS ── */
+    .cycle-steps {
       margin: 1.5rem 0;
-      counter-reset: steps;
     }
 
-    .listserv-step {
+    .cycle-step {
       display: flex;
       gap: 1.25rem;
       margin-bottom: 1.25rem;
       align-items: flex-start;
     }
+
+    .cycle-step:last-child { margin-bottom: 0; }
 
     .step-number {
       background: var(--navy);
@@ -340,18 +287,19 @@
       margin-bottom: 0.1rem;
     }
 
-    .email-chip {
-      display: inline-block;
-      background: var(--navy);
-      color: var(--gold);
-      font-size: 0.82rem;
-      padding: 0.2rem 0.6rem;
-      font-family: monospace;
-      letter-spacing: 0.02em;
-      word-break: break-all;
+    /* ── PENDING NOTICE ── */
+    .pending-notice {
+      background: #fff;
+      border: 1px dashed var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin: 1.5rem 0;
+      font-style: italic;
     }
 
-    /* ── CONTACT ── */
+    /* ── AGENDA / CONTACT BOX ── */
     .contact-box {
       background: #fff;
       border: 1px solid var(--border);
@@ -415,10 +363,13 @@
       .nav-links.open { display: flex; }
       .nav-toggle { display: flex; }
 
-      .membership-card {
+      .schedule-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-meta {
         flex-direction: column;
         gap: 1rem;
-        padding: 1.5rem;
       }
 
       .contact-box {
@@ -437,10 +388,10 @@
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="history.html">About &amp; History</a></li>
-        <li><a href="meetings.html">Meetings</a></li>
+        <li><a href="meetings.html" class="active">Meetings</a></li>
         <li><a href="july4th.html">July 4th</a></li>
         <li><a href="presidents-corner.html">President's Corner</a></li>
-        <li><a href="join.html" class="active">Join</a></li>
+        <li><a href="join.html">Join</a></li>
       </ul>
       <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
@@ -451,99 +402,98 @@
   <!-- PAGE HEADER -->
   <div class="page-header">
     <p class="eyebrow">Wyngate Citizens Association</p>
-    <h1>Join the WCA</h1>
+    <h1>Meetings</h1>
     <div class="divider"></div>
   </div>
 
   <!-- CONTENT -->
   <div class="content-wrap">
 
-    <!-- MEMBERSHIP -->
-    <div class="join-section">
-      <p class="section-label">Membership</p>
-      <h2>Become a Member</h2>
+    <!-- SCHEDULE -->
+    <div class="page-section">
+      <p class="section-label">Meeting Schedule</p>
+      <h2>When We Meet</h2>
       <div class="section-rule"></div>
-      <p>WCA membership connects you to the neighborhood. Members gain access to the WCA listserv — Wyngate's most active community forum, with over 1,400 members discussing everything from local services to neighborhood projects and events.</p>
+      <p>The WCA holds three general membership meetings each year, typically on the third Wednesday of March, June, and September.</p>
 
-      <div class="membership-card">
-        <div class="membership-price">
-          $20
-          <span>per year</span>
+      <div class="schedule-grid">
+        <div class="schedule-card">
+          <p class="month">March</p>
+          <p class="detail">Board elections</p>
         </div>
-        <div class="membership-details">
-          <p>Annual membership in the Wyngate Citizens Association. Pay online via PayPal or Venmo, or by check. Scan a QR code below to pay instantly.</p>
+        <div class="schedule-card">
+          <p class="month">June</p>
+          <p class="detail">General meeting</p>
+        </div>
+        <div class="schedule-card">
+          <p class="month">September</p>
+          <p class="detail">Board nominations</p>
         </div>
       </div>
 
-      <!-- Payment options -->
-      <div class="payment-grid">
-        <div class="payment-card">
-          <h3>PayPal</h3>
-          <img src="images/qr-paypal.png" alt="QR code for WCA PayPal recurring $20 annual membership" />
-          <p>Scan for recurring annual membership via PayPal</p>
+      <div class="schedule-meta">
+        <div>
+          <p>Time</p>
+          <p>7:00 PM</p>
         </div>
-        <div class="payment-card">
-          <h3>Venmo</h3>
-          <img src="images/qr-venmo.png" alt="QR code for WCA Venmo one-time $20 annual membership" />
-          <p>Scan for one-time annual membership via Venmo</p>
+        <div>
+          <p>Location</p>
+          <p>Wyngate Elementary School</p>
         </div>
-      </div>
-
-      <div class="check-box">
-        <h3>Pay by Check</h3>
-        <p>Make checks payable to <strong>Wyngate Citizens Association</strong> and mail to:</p>
-        <address>
-          Wyngate Citizens Association<br>
-          6011 Melvern Drive<br>
-          Bethesda, MD 20817
-        </address>
+        <div>
+          <p>Typical Date</p>
+          <p>3rd Wednesday</p>
+        </div>
       </div>
     </div>
 
-    <!-- LISTSERV -->
-    <div class="join-section">
-      <p class="section-label">Stay Connected</p>
-      <h2>Join the Listserv</h2>
+    <!-- BOARD ELECTIONS -->
+    <div class="page-section">
+      <p class="section-label">Board Elections</p>
+      <h2>Nominations &amp; Elections</h2>
       <div class="section-rule"></div>
-      <p>The WCA listserv on <a href="https://groups.io/g/WyngateCitizens" target="_blank">Groups.io</a> is where the neighborhood conversation happens — curb alerts, recommendations, community news, block parties, and more. Over 1,400 neighbors are already members.</p>
+      <p>WCA board members serve one-year terms, with a nomination and election cycle that runs each fall and spring.</p>
 
-      <div class="listserv-steps">
-        <div class="listserv-step">
+      <div class="cycle-steps">
+        <div class="cycle-step">
           <div class="step-number">1</div>
           <div class="step-text">
-            <strong>Send an email to join</strong>
-            <span class="email-chip">WyngateCitizens+subscribe@groups.io</span>
+            <strong>September — Nominations</strong>
+            Candidates for the WCA board are nominated at the September meeting.
           </div>
         </div>
-        <div class="listserv-step">
+        <div class="cycle-step">
           <div class="step-number">2</div>
           <div class="step-text">
-            <strong>Include in your message</strong>
-            Your name, street address, and reason for joining. Requests without this information will not be approved.
-          </div>
-        </div>
-        <div class="listserv-step">
-          <div class="step-number">3</div>
-          <div class="step-text">
-            <strong>Wait for approval</strong>
-            The WCA board will review and approve your request.
+            <strong>March — Elections</strong>
+            Board members are elected at the March meeting for one-year terms.
           </div>
         </div>
       </div>
     </div>
 
-    <!-- CONTACT -->
-    <div class="join-section">
-      <p class="section-label">Questions?</p>
-      <h2>Contact the Board</h2>
+    <!-- NEXT MEETING -->
+    <div class="page-section">
+      <p class="section-label">Upcoming</p>
+      <h2>Next Meeting</h2>
       <div class="section-rule"></div>
-      <p>Have a question about membership, the listserv, or anything else? Reach the WCA board directly.</p>
+      <div class="pending-notice">
+        Date, time, and agenda for the next meeting will be posted here as they're confirmed.
+      </div>
+    </div>
+
+    <!-- AGENDA SUGGESTIONS -->
+    <div class="page-section">
+      <p class="section-label">Have an Idea?</p>
+      <h2>Suggest an Agenda Item</h2>
+      <div class="section-rule"></div>
+      <p>If you'd like something discussed at an upcoming meeting, send a note to the WCA board with your suggestion.</p>
 
       <div class="contact-box">
         <div class="contact-icon">✉</div>
         <div>
-          <h3>WCA Board</h3>
-          <p><a href="mailto:WyngateBoard@groups.io">WyngateBoard@groups.io</a></p>
+          <h3>Suggest an Agenda Item</h3>
+          <p><a href="mailto:WyngateCitizens+owner@groups.io">WyngateCitizens+owner@groups.io</a></p>
         </div>
       </div>
     </div>

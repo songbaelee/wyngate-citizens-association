@@ -83,7 +83,8 @@
       transition: opacity 0.2s, color 0.2s;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.active {
       opacity: 1;
       color: var(--gold-light);
     }
@@ -430,7 +431,11 @@
     <div class="nav-inner">
       <a class="nav-logo" href="index.html">WCA</a>
       <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="history.html">About &amp; History</a></li>
+        <li><a href="meetings.html">Meetings</a></li>
+        <li><a href="july4th.html">July 4th</a></li>
+        <li><a href="presidents-corner.html">President's Corner</a></li>
         <li><a href="join.html">Join</a></li>
       </ul>
       <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
