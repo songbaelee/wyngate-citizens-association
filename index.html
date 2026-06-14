@@ -304,6 +304,29 @@
       opacity: 0.8;
     }
 
+    /* ── NEIGHBORHOOD MAP ── */
+    #neighborhood-map {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .map-embed-wrap {
+      position: relative;
+      width: 100%;
+      padding-bottom: 75%;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .map-embed-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
     /* ── DO YOU ── */
     #get-involved-teaser {
       background: var(--cream);
@@ -487,6 +510,18 @@
             <span class="stat-label">Annual Celebration</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEIGHBORHOOD MAP -->
+  <section id="neighborhood-map">
+    <div class="section-inner">
+      <p class="section-label">Where We Are</p>
+      <h2 class="section-title">Wyngate Neighborhood Boundary</h2>
+      <div class="section-divider"></div>
+      <div class="map-embed-wrap">
+        <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1eIiIBkicnXiC37oGsb_klLtSeA4Nvyg&ehbc=2E312F&noprof=1" loading="lazy"></iframe>
       </div>
     </div>
   </section>
