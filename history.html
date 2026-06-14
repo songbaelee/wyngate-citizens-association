@@ -212,6 +212,34 @@
       line-height: 1.4;
     }
 
+    /* ── MAP GRID ── */
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .map-item img {
+      width: 100%;
+      display: block;
+      border: 1px solid var(--border);
+    }
+
+    .map-item .map-year {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin-top: 0.6rem;
+    }
+
+    .map-item .photo-caption a {
+      color: var(--navy);
+      text-decoration: underline;
+      text-decoration-color: var(--gold);
+    }
+
     /* ── SINGLE PHOTO ── */
     .photo-single {
       margin: 2rem 0;
@@ -387,6 +415,21 @@
       margin-bottom: 0.25rem;
     }
 
+    /* ── INSTRUCTIONS NOTE ── */
+    .instructions-note {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin: 1.5rem 0;
+    }
+
+    .instructions-note strong {
+      color: var(--navy);
+    }
+
     /* ── PENDING NOTICE ── */
     .pending-notice {
       background: #fff;
@@ -491,7 +534,8 @@
       .nav-toggle { display: flex; }
 
       .photo-pair,
-      .ad-pair {
+      .ad-pair,
+      .map-grid {
         grid-template-columns: 1fr;
       }
 
@@ -551,6 +595,7 @@
       <div class="section-rule"></div>
       <p>The Wyngate Citizens Association (WCA) is a nonprofit group representing the approximately 1,600 households that live between Fernwood Road, Greentree Road, the Capital Beltway, and Old Georgetown Road in Bethesda, Maryland.</p>
       <p>The WCA works to connect neighbors, support community projects, and give residents a voice on issues affecting their quality of life. The WCA listserv — with over 1,400 members — is one of the most active neighborhood forums in the area.</p>
+      <p>Wyngate also participates in <a href="http://wnhn.org" target="_blank">Maplewood &amp; Wyngate Neighbors Helping Neighbors</a>, a joint program connecting neighbors with simple services like rides, errands, and other neighborly help.</p>
 
       <div class="pending-notice">
         Additional history of the Wyngate Citizens Association coming soon.
@@ -570,6 +615,10 @@
       </div>
 
       <p>The aerial photographs below show the transformation of the neighborhood decade by decade — from open land in 1949 to a fully developed community by 1979.</p>
+
+      <div class="instructions-note">
+        <strong>How to use this:</strong> Drag the gold circle left and right to compare the two photos side by side — the left side shows the earlier year, the right side the later year. Click a year button above the slider to change which decades are being compared (e.g., click "1970" to compare 1970 with 1979).
+      </div>
 
       <div class="aerial-slider-wrap">
         <!-- Year selector -->
@@ -600,7 +649,49 @@
           <span id="label-right">1957 →</span>
         </div>
       </div>
-      <p class="credits-note">Aerial images © HistoricAerials.com — placeholder images, licensed versions pending. Submitted by George Smith. Drag the divider to compare years; use the buttons to step through time.</p>
+      <p class="credits-note">Aerial images © HistoricAerials.com — placeholder images, licensed versions pending. Submitted by George Smith.</p>
+    </div>
+
+    <!-- EARLY MAPS -->
+    <div class="history-section">
+      <p class="section-label">Mapping the Area</p>
+      <h2>Early Maps of Wyngate</h2>
+      <div class="section-rule"></div>
+      <p>Historical maps and atlases trace the slow transformation of this area from farmland to neighborhood over more than half a century.</p>
+
+      <div class="map-grid">
+        <div class="map-item">
+          <img src="images/map-1894.jpg" alt="1894 Hopkins map detail showing I.S. Hendry and Thomas Renshaw landholdings" />
+          <p class="map-year">1894</p>
+          <p class="photo-caption">Hopkins, <em>Vicinity of Washington</em>. I.S. Hendry held 100 acres and Thomas Renshaw 70 acres in this area. <a href="https://www.loc.gov/item/88693364/" target="_blank">View full map</a></p>
+        </div>
+        <div class="map-item">
+          <img src="images/map-1904.jpg" alt="1904 Baist's map detail showing Hendry and Renshaw landholdings near Alta Vista" />
+          <p class="map-year">1904</p>
+          <p class="photo-caption">Baist's <em>Map of the Vicinity of Washington, D.C.</em> The Hendry and Renshaw holdings remain, with the Alta Vista subdivision developing nearby. <a href="https://www.loc.gov/item/87691445/" target="_blank">View full map</a></p>
+        </div>
+        <div class="map-item">
+          <img src="images/map-1916.jpg" alt="1916 Real Estate Atlas detail showing trolley tracks and future YMCA site" />
+          <p class="map-year">1916</p>
+          <p class="photo-caption">Real Estate Atlas. Area 33 is the present-day site of the YMCA; note the trolley tracks running along what is now Old Georgetown Road. <a href="https://mchdr.montgomeryhistory.org/items/1ea0de83-f352-4809-b6fe-41c052db31bb" target="_blank">View full map</a></p>
+        </div>
+        <div class="map-item">
+          <img src="images/map-1941.jpg" alt="1941 Atlas of Montgomery County detail showing Wyngate area before development" />
+          <p class="map-year">1941</p>
+          <p class="photo-caption"><em>Atlas of Montgomery County</em>, compiled by Klinge. "Wyngate" appears by name for the first time, alongside Walton, Wilmett, and Melvern roads — though the land is still largely undeveloped. <a href="https://mchdr.montgomeryhistory.org/items/3d9bee2c-e1ea-4e61-8698-6c5bd84fb3a8" target="_blank">View full map</a></p>
+        </div>
+        <div class="map-item">
+          <img src="images/map-1951.jpg" alt="1951 aerial view showing new housing between Ewing Drive and Singleton Drive" />
+          <p class="map-year">1951</p>
+          <p class="photo-caption">Aerial view showing new housing built out between Ewing Drive and Singleton Drive. <a href="https://experience.arcgis.com/experience/4d1be724c222444daf63b80b676539a9" target="_blank">View interactive map</a></p>
+        </div>
+        <div class="map-item">
+          <img src="images/map-1953.jpg" alt="1953 Atlas of Montgomery County detail showing Hendry Estates and Wyngate streets built out" />
+          <p class="map-year">1953</p>
+          <p class="photo-caption"><em>Atlas of Montgomery County</em>, compiled by Klinge. The Hendry Estates streets are now fully laid out, with housing filling in between Old Georgetown Road and Ewing Drive. <a href="https://mchdr.montgomeryhistory.org/items/a077ad5d-71df-4a5f-924e-d850bb8386c4" target="_blank">View full map</a></p>
+        </div>
+      </div>
+      <p class="credits-note">Maps researched and shared by George Smith.</p>
     </div>
 
     <!-- HENDRY FARM -->
@@ -647,6 +738,24 @@
       <p>Some of Wyngate's earliest homes predate the postwar building boom. Two houses on Kentstone Drive date to 1939 and are still standing today. According to family history, 9516 Kentstone Drive was one of fifteen "Houses of Tomorrow" displayed at the 1939 World's Fair — demonstration homes built to showcase modern construction and design. The house has since been demolished, but its twin at 9518 Kentstone remains.</p>
       <p>The original owner of 9518 Kentstone was William Camp, who served as Comptroller of the Currency for the U.S. Treasury Department — notably, the only Comptroller to serve under both a Democratic and a Republican president.</p>
       <p class="credits-note">Kentstone history shared by Cathy Adams, former resident. World's Fair connection based on family recollection.</p>
+    </div>
+
+    <!-- RESTRICTIVE COVENANTS -->
+    <div class="history-section">
+      <p class="section-label">A Fuller History</p>
+      <h2>Restrictive Covenants</h2>
+      <div class="section-rule"></div>
+      <p>Like most suburban subdivisions built around Washington, D.C. in the first half of the twentieth century, properties in this part of Bethesda were originally sold subject to deeds of covenant that — alongside ordinary restrictions on lot size, setbacks, and building type — explicitly barred Black families from buying, renting, or occupying homes. These racial restrictive covenants were a standard tool used by developers and builders throughout the area during this period.</p>
+
+      <p>The document below is a 1949 deed of covenants recorded for a Bethesda subdivision near Wyngate. Clause (f) states plainly that no Black person may buy, rent, lease, use, or occupy any building or lot, except as a domestic servant residing on the property.</p>
+
+      <div class="photo-single">
+        <img src="images/1949-covenant.jpg" alt="1949 deed of covenants, clause (f), restricting occupancy by race" />
+        <p class="photo-caption">Deed of Covenants, Liber 1251, Folio 490, recorded May 6, 1949. Clause (f) imposes a racial restriction on occupancy.</p>
+      </div>
+
+      <p>Covenants like this one were used throughout the Bethesda-Chevy Chase area and the wider Washington suburbs, and were one of several tools — alongside discriminatory lending and real estate steering — that limited homeownership opportunities for Black families in neighborhoods like ours. Montgomery County's <a href="https://montgomeryplanning.org/wp-content/uploads/2022/12/Mapping-Segregation-Staff-Report-Attachment-A.pdf" target="_blank">Mapping Segregation project</a> documents this history across the Downcounty Planning Area, which includes Wyngate.</p>
+      <p class="credits-note">Document shared by George Smith.</p>
     </div>
 
     <!-- NOTABLE RESIDENTS -->
