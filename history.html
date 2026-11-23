@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>History — Wyngate Citizens Association</title>
+  <title>Neighborhood History — Wyngate Citizens Association</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet" />
@@ -576,6 +576,24 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ── NAV COLLAPSE (8 menu items) ── */
+    @media (max-width: 1000px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 3px solid var(--gold);
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -586,10 +604,12 @@
       <a class="nav-logo" href="index.html">WCA</a>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="history.html" class="active">About &amp; History</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="history.html" class="active">History</a></li>
         <li><a href="meetings.html">Meetings</a></li>
         <li><a href="july4th.html">July 4th</a></li>
         <li><a href="presidents-corner.html">President's Corner</a></li>
+        <li><a href="community.html">Community</a></li>
         <li><a href="join.html">Join</a></li>
       </ul>
       <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -601,26 +621,12 @@
   <!-- PAGE HEADER -->
   <div class="page-header">
     <p class="eyebrow">Wyngate Citizens Association</p>
-    <h1>About &amp; History</h1>
+    <h1>Neighborhood History</h1>
     <div class="divider"></div>
   </div>
 
   <!-- CONTENT -->
   <div class="content-wrap">
-
-    <!-- ABOUT WCA -->
-    <div class="history-section">
-      <p class="section-label">Who We Are</p>
-      <h2>About the Wyngate Citizens Association</h2>
-      <div class="section-rule"></div>
-      <p>The Wyngate Citizens Association (WCA) is a nonprofit group representing the approximately 1,600 households that live between Fernwood Road, Greentree Road, the Capital Beltway, and Old Georgetown Road in Bethesda, Maryland.</p>
-      <p>The WCA works to connect neighbors, support community projects, and give residents a voice on issues affecting their quality of life. The WCA listserv — with over 1,400 members — is one of the most active neighborhood forums in the area.</p>
-      <p>Wyngate also participates in <a href="http://wnhn.org" target="_blank">Maplewood &amp; Wyngate Neighbors Helping Neighbors</a>, a joint program connecting neighbors with simple services like rides, errands, and other neighborly help.</p>
-
-      <div class="pending-notice">
-        Additional history of the Wyngate Citizens Association coming soon.
-      </div>
-    </div>
 
     <!-- FARM TO SUBURB -->
     <div class="history-section">
@@ -796,6 +802,16 @@
           <h3>Nils Lofgren</h3>
           <p>Rock guitarist and longtime member of Bruce Springsteen's E Street Band, inducted into the Rock and Roll Hall of Fame in 2014. Lofgren grew up in Bethesda and attended Walter Johnson High School. He is believed to have lived on Wilmett Court.</p>
           <p class="credits-note">Shared by Arlene Ferretti.</p>
+        </div>
+
+        <div class="notable-item">
+          <h3>Ken Walsh</h3>
+          <p>Ken Walsh grew up in the Wyngate neighborhood in the 1950s. He has covered national politics since 1981 and became the chief White House correspondent for <em>U.S. News &amp; World Report</em>. Ken has covered six presidents (Reagan, Bush, Clinton, Bush, Obama, and Trump) and written eight books. Read more: <a href="https://en.wikipedia.org/wiki/Kenneth_T._Walsh" target="_blank">Wikipedia</a>.</p>
+        </div>
+
+        <div class="notable-item">
+          <h3>Rachel Feinstein</h3>
+          <p>Rachel Feinstein grew up in the Wyngate neighborhood and graduated from Walter Johnson High School around 1998 (her exact age is a closely guarded secret!). After finishing as a finalist on season 7 of <em>Last Comic Standing</em> in 2010, she released her debut comedy album the following year. Now based in New York, she tours constantly and has released two hour-long specials, one on Comedy Central in 2016 and one on Netflix in 2024. Read more: <a href="https://en.wikipedia.org/wiki/Rachel_Feinstein_(comedian)" target="_blank">Wikipedia</a>.</p>
         </div>
       </div>
     </div>

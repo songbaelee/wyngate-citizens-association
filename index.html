@@ -445,6 +445,24 @@
         grid-template-columns: 1fr;
       }
     }
+
+    /* ── NAV COLLAPSE (8 menu items) ── */
+    @media (max-width: 1000px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 3px solid var(--gold);
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -455,10 +473,12 @@
       <a class="nav-logo" href="index.html">WCA</a>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="history.html">About &amp; History</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="history.html">History</a></li>
         <li><a href="meetings.html">Meetings</a></li>
         <li><a href="july4th.html">July 4th</a></li>
         <li><a href="presidents-corner.html">President's Corner</a></li>
+        <li><a href="community.html">Community</a></li>
         <li><a href="join.html">Join</a></li>
       </ul>
       <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -475,7 +495,7 @@
       <p class="hero-desc">A nonprofit community organization serving the 1,600 households of Wyngate — connecting neighbors, supporting local projects, and strengthening our community.</p>
       <div class="hero-actions">
         <a href="join.html" class="btn btn-gold">Join the WCA</a>
-        <a href="history.html" class="btn btn-outline">Learn More</a>
+        <a href="about.html" class="btn btn-outline">Learn More</a>
       </div>
     </div>
   </section>
@@ -490,7 +510,7 @@
           <div class="section-divider"></div>
           <p>The Wyngate Citizens Association (WCA) is a nonprofit group representing the households that live between Fernwood Road, Greentree Road, the Capital Beltway, and Old Georgetown Road.</p>
           <p>When you want to know what's happening in the community, WCA can put you in touch with people who have answers — its members. It's the next best thing to chatting with neighbors over the backyard fence.</p>
-          <p style="margin-top:1.5rem"><a href="history.html" class="btn btn-gold">About WCA</a></p>
+          <p style="margin-top:1.5rem"><a href="about.html" class="btn btn-gold">About WCA</a></p>
         </div>
         <div class="about-stats">
           <div class="stat-box">

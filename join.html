@@ -233,7 +233,7 @@
     /* ── PAYMENT OPTIONS ── */
     .payment-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.25rem;
       margin: 1.5rem 0;
     }
@@ -260,6 +260,8 @@
       margin: 0 auto 0.75rem;
       display: block;
     }
+
+    .payment-card a { color: var(--navy); }
 
     .payment-card p {
       font-size: 0.85rem;
@@ -426,6 +428,24 @@
         gap: 0.75rem;
       }
     }
+
+    /* ── NAV COLLAPSE (8 menu items) ── */
+    @media (max-width: 1000px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 1rem 1.5rem 1.5rem;
+        gap: 1rem;
+        border-bottom: 3px solid var(--gold);
+      }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+    }
   </style>
 </head>
 <body>
@@ -436,10 +456,12 @@
       <a class="nav-logo" href="index.html">WCA</a>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
-        <li><a href="history.html">About &amp; History</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="history.html">History</a></li>
         <li><a href="meetings.html">Meetings</a></li>
         <li><a href="july4th.html">July 4th</a></li>
         <li><a href="presidents-corner.html">President's Corner</a></li>
+        <li><a href="community.html">Community</a></li>
         <li><a href="join.html" class="active">Join</a></li>
       </ul>
       <div class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -478,9 +500,14 @@
       <!-- Payment options -->
       <div class="payment-grid">
         <div class="payment-card">
-          <h3>PayPal</h3>
+          <h3>PayPal — Recurring</h3>
           <img src="images/qr-paypal.png" alt="QR code for WCA PayPal recurring $20 annual membership" />
-          <p>Scan for recurring annual membership via PayPal</p>
+          <p>Scan for recurring annual membership via PayPal, or <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=MYCJ9JPKRHUZE" target="_blank">sign up for recurring membership online</a>.</p>
+        </div>
+        <div class="payment-card">
+          <h3>PayPal — One-Time</h3>
+          <img src="images/qr-paypal-onetime.png" alt="QR code for WCA PayPal one-time payment" />
+          <p>Scan for a one-time annual membership payment via PayPal</p>
         </div>
         <div class="payment-card">
           <h3>Venmo</h3>
